@@ -150,7 +150,7 @@ namespace AdjustDurationBeneficial
       var set = SoTContext.Touched;
       if (set == null || set.Count == 0) return;
 
-      const float TARGET = 600f;
+      const float TARGET = 3600f;
 
       foreach (var se in set)
       {
