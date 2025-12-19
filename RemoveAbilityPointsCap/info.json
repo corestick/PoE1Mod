@@ -1,0 +1,11 @@
+{
+  "Id": "RemoveAbilityPointsCap",
+  "DisplayName": "RemoveAbilityPointsCap",
+  "Author": "Jongwon",
+  "Version": "1.0.0",
+  "ManagerVersion": "0.32.4",
+  "Requirements": [],
+  "Game": "PillarsOfEternity",
+  "AssemblyName": "RemoveAbilityPointsCap.dll",
+  "EntryMethod": "RemoveAbilityPointsCap.Main.Load"
+}

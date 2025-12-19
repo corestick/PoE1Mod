@@ -1,0 +1,10 @@
+{
+  "Id": "EnablePerEncounterSpells",
+  "DisplayName": "EnablePerEncounterSpells",
+  "Author": "Jongwon",
+  "Version": "1.0.0",
+  "ManagerVersion": "0.32.4",
+  "Requirements": [],
+  "AssemblyName": "EnablePerEncounterSpells.dll",
+  "EntryMethod": "EnablePerEncounterSpells.Main.Load"
+}

@@ -1,0 +1,11 @@
+{
+  "Id": "TrapDetectAlways",
+  "DisplayName": "Always Detect Traps (No Stealth Needed)",
+  "Author": "Jongwon",
+  "Version": "1.0.0",
+  "ManagerVersion": "0.32.4",
+  "Requirements": [],
+  "Game": "PillarsOfEternity",
+  "AssemblyName": "TrapDetectAlways.dll",
+  "EntryMethod": "TrapDetectAlways.Main.Load"
+}

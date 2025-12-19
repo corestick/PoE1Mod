@@ -1,0 +1,10 @@
+{
+  "Id": "AchievementCheck",
+  "DisplayName": "AchievementCheck",
+  "Author": "Jongwon",
+  "Version": "1.0.0",
+  "ManagerVersion": "0.32.4",
+  "Requirements": [],
+  "AssemblyName": "AchievementCheck.dll",
+  "EntryMethod": "AchievementCheck.Main.Load"
+}

@@ -1,0 +1,10 @@
+{
+  "Id": "GrimoireSlots",
+  "DisplayName": "Grimoire Slots Expand",
+  "Author": "Jongwon",
+  "Version": "1.0.19",
+  "ManagerVersion": "0.32.4",
+  "Requirements": [],
+  "AssemblyName": "GrimoireSlots.dll",
+  "EntryMethod": "GrimoireSlots.Main.Load"
+}

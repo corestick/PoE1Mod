@@ -1,0 +1,10 @@
+{
+  "Id": "CharacterStatsEditor",
+  "DisplayName": "Character Stats Editor",
+  "Author": "Jongwon",
+  "Version": "1.0.1",
+  "ManagerVersion": "0.32.4",
+  "Requirements": [],
+  "AssemblyName": "CharacterStatsEditor.dll",
+  "EntryMethod": "CharacterStatsEditor.Main.Load"
+}

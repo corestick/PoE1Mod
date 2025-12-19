@@ -1,0 +1,10 @@
+{
+  "Id": "AdjustDurationBeneficial",
+  "DisplayName": "AdjustDurationBeneficial",
+  "Author": "Jongwon",
+  "Version": "1.0.7",
+  "ManagerVersion": "0.32.4",
+  "Requirements": [],
+  "AssemblyName": "AdjustDurationBeneficial.dll",
+  "EntryMethod": "AdjustDurationBeneficial.Main.Load"
+}

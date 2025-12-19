@@ -1,0 +1,11 @@
+{
+  "Id": "RemovePlayerLevelCap",
+  "DisplayName": "RemovePlayerLevelCap",
+  "Author": "Jongwon",
+  "Version": "1.0.0",
+  "ManagerVersion": "0.32.4",
+  "Requirements": [],
+  "Game": "PillarsOfEternity",
+  "AssemblyName": "RemovePlayerLevelCap.dll",
+  "EntryMethod": "RemovePlayerLevelCap.Main.Load"
+}

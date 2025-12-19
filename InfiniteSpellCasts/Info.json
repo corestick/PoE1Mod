@@ -1,0 +1,10 @@
+{
+  "Id": "InfiniteSpellCasts",
+  "DisplayName": "Infinite Spell Casts",
+  "Author": "Jongwon",
+  "Version": "1.0.3",
+  "ManagerVersion": "0.32.4",
+  "Requirements": [],
+  "AssemblyName": "InfiniteSpellCasts.dll",
+  "EntryMethod": "InfiniteSpellCasts.Main.Load"
+}

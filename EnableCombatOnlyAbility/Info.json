@@ -1,0 +1,10 @@
+{
+  "Id": "EnableCombatOnlyAbility",
+  "DisplayName": "EnableCombatOnlyAbility",
+  "Author": "Jongwon",
+  "Version": "1.0.1",
+  "ManagerVersion": "0.32.4",
+  "Requirements": [],
+  "AssemblyName": "EnableCombatOnlyAbility.dll",
+  "EntryMethod": "EnableCombatOnlyAbility.Main.Load"
+}
