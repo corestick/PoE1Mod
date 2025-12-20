@@ -150,7 +150,8 @@ namespace AdjustDurationBeneficial
       var set = SoTContext.Touched;
       if (set == null || set.Count == 0) return;
 
-      const float TARGET = 3600f;
+      int minutes = Main.Settings?.SoTDurationMinutes ?? 10;
+      float targetSeconds = Mathf.Clamp(minutes, 1, 1000) * 60f;
 
       foreach (var se in set)
       {
@@ -168,7 +169,7 @@ namespace AdjustDurationBeneficial
 
         // 엔진이 "연장"한 것만 건드리므로, 패시브/오라 필터를 여기서 억지로 더할 필요 없음
         // 리필(재적용) 처리
-        SEPriv.Duration(se) = TARGET;
+        SEPriv.Duration(se) = targetSeconds;
         SEPriv.TempAdj(se) = 0f;
         SEPriv.TimeActive(se) = 0f;
         SEPriv.IntervalTimer(se) = 0f;
