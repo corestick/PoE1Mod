@@ -1,0 +1,10 @@
+{
+  "Id": "DoubleTalentPoints",
+  "DisplayName": "DoubleTalentPoints",
+  "Author": "Jongwon",
+  "Version": "1.0.1",
+  "ManagerVersion": "0.32.4",
+  "Requirements": [],
+  "AssemblyName": "DoubleTalentPoints.dll",
+  "EntryMethod": "DoubleTalentPoints.Main.Load"
+}
