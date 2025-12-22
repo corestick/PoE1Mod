@@ -1,0 +1,10 @@
+{
+  "Id": "AdjustBuffDuration",
+  "DisplayName": "AdjustBuffDuration",
+  "Author": "Jongwon",
+  "Version": "1.0.0",
+  "ManagerVersion": "0.32.4",
+  "Requirements": [],
+  "AssemblyName": "AdjustBuffDuration.dll",
+  "EntryMethod": "AdjustBuffDuration.Main.Load"
+}
