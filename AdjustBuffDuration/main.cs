@@ -8,10 +8,12 @@ namespace AdjustBuffDuration
 {
   public static class Main
   {
+    public static UnityModManager.ModEntry Mod;
     public static Settings Settings;
 
     static bool Load(UnityModManager.ModEntry modEntry)
     {
+      Mod = modEntry;   // 👈 이거 추가
       Settings = UnityModManager.ModSettings.Load<Settings>(modEntry);
 
       var harmony = new Harmony(modEntry.Info.Id);
