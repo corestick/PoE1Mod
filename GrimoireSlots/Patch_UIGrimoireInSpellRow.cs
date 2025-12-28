@@ -7,8 +7,6 @@ namespace GrimoireSlots
   [HarmonyPatch(typeof(UIGrimoireInSpellRow), "Init")]
   public static class Patch_UIGrimoireInSpellRow_Init
   {
-    private const int TargetSlots = 7;
-
     static void Postfix(UIGrimoireInSpellRow __instance)
     {
       var field = AccessTools.Field(typeof(UIGrimoireInSpellRow), "m_Spells");
@@ -19,7 +17,7 @@ namespace GrimoireSlots
       var rootIconGO = __instance.RootSpell.Icon.gameObject;
       var rootListener = UIEventListener.Get(rootIconGO);
 
-      for (int i = list.Count; i < TargetSlots; i++)
+      for (int i = list.Count; i < Main.TargetSlots; i++)
       {
         var cloneGO = NGUITools.AddChild(
             __instance.RootSpell.transform.parent.gameObject,

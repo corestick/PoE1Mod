@@ -8,8 +8,8 @@ namespace GrimoireSlots
     static void Postfix(Grimoire.SpellChapter __instance)
     {
       // SpellData 기본값을 4칸 → 7칸으로 확장
-      if (__instance.SpellData.Length != 7)
-        __instance.SpellData = new GenericSpell[7];
+      if (__instance.SpellData.Length != Main.TargetSlots)
+        __instance.SpellData = new GenericSpell[Main.TargetSlots];
     }
   }
 

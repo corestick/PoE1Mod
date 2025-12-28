@@ -9,8 +9,33 @@ namespace GrimoireSlots
   [HarmonyPatch(typeof(Grimoire), "Start")]
   public static class Patch_Grimoire_Start
   {
-    // Start()의 truncate 로직이 SpellData를 4칸으로 줄여버리므로 원본 스킵 필수
-    static bool Prefix() => false;
+    static bool Prefix(Grimoire __instance)
+    {
+      if (__instance.Spells.Length != 8)
+      {
+        Grimoire.SpellChapter[] array = new Grimoire.SpellChapter[8];
+        __instance.Spells.CopyTo(array, 0);
+        __instance.Spells = array;
+      }
+      for (int i = 0; i < __instance.Spells.Length; i++)
+      {
+        if (__instance.Spells[i] == null)
+        {
+          __instance.Spells[i] = new Grimoire.SpellChapter();
+        }
+        else if (__instance.Spells[i].SpellData.Length != Main.TargetSlots)
+        {
+          GenericSpell[] array2 = new GenericSpell[Main.TargetSlots];
+          for (int j = 0; j < Mathf.Min(array2.Length, __instance.Spells[i].SpellData.Length); j++)
+          {
+            array2[j] = __instance.Spells[i].SpellData[j];
+          }
+          __instance.Spells[i].SpellData = array2;
+        }
+      }
+
+      return false;
+    }
   }
 
   //사용가능 스펠 제한을 제거 -> 주문버튼 4개이상 활성화
