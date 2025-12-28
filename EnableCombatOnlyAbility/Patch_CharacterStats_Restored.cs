@@ -8,7 +8,7 @@ namespace EnableCombatOnlyAbility
   public static class CharacterStats_Restored_Postfix
   {
     [HarmonyPostfix]
-    public static void Postfix(CharacterStats __instance)
+    public static bool Prefix(CharacterStats __instance)
     {
       var abilities = Traverse
           .Create(__instance)
@@ -22,6 +22,8 @@ namespace EnableCombatOnlyAbility
 
         ability.CombatOnly = false;
       }
+
+      return true;
     }
   }
 }
