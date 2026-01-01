@@ -2,8 +2,8 @@
   <PropertyGroup>
     <TargetFramework>net472</TargetFramework>
     <OutputType>Library</OutputType>
-    <AssemblyName>ItemStackable</AssemblyName>
-    <RootNamespace>ItemStackable</RootNamespace>
+    <AssemblyName>StackableMod</AssemblyName>
+    <RootNamespace>StackableMod</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
