@@ -37,59 +37,33 @@ namespace AdjustBuffDuration
       if (targetStats == null || !targetStats.IsPartyMember)
         return;
 
-      // 챈터 노래 / 오라 제외
-      if (__instance.IsAura || __instance.PhraseOrigin != null)
-        return;
-
       // 버프명 필터 음식
       var origin = __instance.Origin;
       if (origin != null)
       {
-        string name = origin.name;
+        string originName = origin.name;
 
-        // Clone 붙어도 startsWith는 그대로 먹힘
-        if (name.StartsWith("Food_"))
+        if (!BuffWhitelistManager.IsAllowed(originName))
         {
-          Debug.Log($"[SoT][FILTER] Food blocked: {name}");
+          if (!BuffWhitelistManager.IsFilterd(originName))
+          {
+            Main.LogParams($"[StatusEffect]");
+            Main.LogParams($" Origin             : {origin}");
+            Main.LogParams($" AffectsStat        : {__instance.Params.AffectsStat}");
+            Main.LogParams($" Duration           : {__instance.Params.Duration}");
+            Main.LogParams($" DmgType            : {__instance.Params.DmgType}");
+            Main.LogParams($" Value              : {__instance.Params.Value}");
+            Main.LogParams($" MaxRestCycles      : {__instance.Params.MaxRestCycles}");
+          }
+
           return;
         }
+        else
+        {
+          // 🔥 최종 지속시간 덮어쓰기
+          __result = Main.Settings.BuffDurationMinutes * 60f;
+        }
       }
-
-      //LogParams(__instance, "CHECKBUFF");
-
-      // 치유 계열
-      if (__instance.Params.AffectsStat == StatusEffect.ModifiedStat.Health ||
-          __instance.Params.AffectsStat == StatusEffect.ModifiedStat.Stamina ||
-          __instance.Params.AffectsStat == StatusEffect.ModifiedStat.HealthPercent ||
-          __instance.Params.AffectsStat == StatusEffect.ModifiedStat.StaminaPercent)
-        return;
-
-      // 정수주입 계열 제외 (선택)
-      if (__instance.Params.AffectsStat == StatusEffect.ModifiedStat.MaxHealth ||
-          __instance.Params.AffectsStat == StatusEffect.ModifiedStat.MaxStamina)
-        return;
-
-      // 🔥 최종 지속시간 덮어쓰기
-      __result = Main.Settings.SoTDurationMinutes * 60f;
-    }
-
-    static void LogParams(StatusEffect se, string tag)
-    {
-      var p = se.Params;
-      var origin = se.Origin ? se.Origin.name : "NULL";
-
-      Main.Mod.Logger.Log($"[{tag}] StatusEffect");
-      Main.Mod.Logger.Log($" Origin               : {origin}");
-      Main.Mod.Logger.Log($" AffectsStat          : {p.AffectsStat}");
-      Main.Mod.Logger.Log($" Duration             : {p.Duration}");
-      Main.Mod.Logger.Log($" DmgType              : {p.DmgType}");
-      Main.Mod.Logger.Log($" Value                : {p.Value}");
-
-      if (p.ConsumablePrefab != null)
-        Main.Mod.Logger.Log($" ConsumablePrefab: {p.ConsumablePrefab.name}");
-
-      if (p.AbilityPrefab != null)
-        Main.Mod.Logger.Log($" AbilityPrefab   : {p.AbilityPrefab.name}");
     }
   }
 }
