@@ -1,0 +1,10 @@
+{
+  "Id": "StrongholdAdventureTurn",
+  "DisplayName": "StrongholdAdventureTurn",
+  "Author": "Jongwon",
+  "Version": "1.0.0",
+  "ManagerVersion": "0.32.4",
+  "Requirements": [],
+  "AssemblyName": "StrongholdAdventureTurn.dll",
+  "EntryMethod": "StrongholdAdventureTurn.Main.Load"
+}
