@@ -37,7 +37,6 @@ namespace AdjustBuffDuration
       if (targetStats == null || !targetStats.IsPartyMember)
         return;
 
-      // 버프명 필터 음식
       var origin = __instance.Origin;
       if (origin != null)
       {
@@ -45,15 +44,9 @@ namespace AdjustBuffDuration
 
         if (!BuffWhitelistManager.IsAllowed(originName))
         {
-          if (!BuffWhitelistManager.IsFilterd(originName))
+          if (!BuffWhitelistManager.IsFilterd(originName) && !string.IsNullOrEmpty(originName))
           {
-            Main.LogParams($"[StatusEffect]");
-            Main.LogParams($" Origin             : {origin}");
-            Main.LogParams($" AffectsStat        : {__instance.Params.AffectsStat}");
-            Main.LogParams($" Duration           : {__instance.Params.Duration}");
-            Main.LogParams($" DmgType            : {__instance.Params.DmgType}");
-            Main.LogParams($" Value              : {__instance.Params.Value}");
-            Main.LogParams($" MaxRestCycles      : {__instance.Params.MaxRestCycles}");
+            LogEffect(originName, __instance);
           }
 
           return;
@@ -64,6 +57,28 @@ namespace AdjustBuffDuration
           __result = Main.Settings.BuffDurationMinutes * 60f;
         }
       }
+    }
+
+    private static void LogEffect(string originName, StatusEffect __instance)
+    {
+      Main.LogParams($"[StatusEffect]");
+      Main.LogParams($" OriginName            : {originName}");
+      Main.LogParams($" AbilityOrigin.name    : {__instance.AbilityOrigin.name}");
+      Main.LogParams($" BundleName            : {__instance.BundleName}");
+      Main.LogParams($" AbilityType           : {__instance.AbilityType}");
+      Main.LogParams($" EffectID              : {__instance.EffectID}");
+      Main.LogParams($" StackingKey           : {__instance.GetStackingKey()}");
+      Main.LogParams($" NonstackingEffectType : {__instance.NonstackingEffectType}");
+
+      Main.LogParams($" AffectsStat        : {__instance.Params.AffectsStat}");
+      Main.LogParams($" Duration           : {__instance.Params.Duration}");
+      Main.LogParams($" DmgType            : {__instance.Params.DmgType}");
+      Main.LogParams($" Value              : {__instance.Params.Value}");
+      Main.LogParams($" MaxRestCycles      : {__instance.Params.MaxRestCycles}");
+      Main.LogParams($" ClassType          : {__instance.Params.ClassType}");
+      Main.LogParams($" DefenseType        : {__instance.Params.DefenseType}");
+      Main.LogParams($" AttributeType      : {__instance.Params.AttributeType}");
+      Main.LogParams($" IsHostile          : {__instance.Params.IsHostile}");
     }
   }
 }
