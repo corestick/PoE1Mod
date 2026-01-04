@@ -10,6 +10,7 @@ namespace StrongholdAdventureTurn
 
     public static bool Load(UnityModManager.ModEntry modEntry)
     {
+      Settings = UnityModManager.ModSettings.Load<Settings>(modEntry);
       modEntry.OnGUI = OnGUI;
       modEntry.OnSaveGUI = OnSaveGUI;
 
