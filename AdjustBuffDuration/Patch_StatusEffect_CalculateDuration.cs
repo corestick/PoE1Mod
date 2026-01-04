@@ -10,75 +10,71 @@ namespace AdjustBuffDuration
   [HarmonyPatch(typeof(StatusEffect), "CalculateDuration")]
   public static class Patch_StatusEffect_CalculateDuration
   {
-    static void Postfix(
+    static bool Prefix(
     StatusEffect __instance,
     GameObject target,
     bool ignoreTemporaryAdjustment,
     ref float __result)
     {
-      // 지속시간 없는 효과
-      if (__result <= 0f)
-        return;
+      if (!__instance.m_needsDurationCalculated)
+        return true;
 
-      // 버프 시전자
+      if (__instance.Origin == null || __instance.AbilityOrigin == null)
+        return true;
+
+      if (__instance.Params.Duration <= 0f && __instance.m_durationOverride <= 0f)
+        return true;
+
+      if (ShouldApply(__instance, target))
+      {
+        // Main.LogEffect(__instance);
+        __instance.Duration = Main.Settings.BuffDurationMinutes * 60f;
+        __instance.m_durationOverride = Main.Settings.BuffDurationMinutes * 60f;
+      }
+
+      return true;
+    }
+
+    private static bool ShouldApply(StatusEffect __instance, GameObject target)
+    {
+      // 시전자
       var owner = __instance.Owner;
       if (owner == null)
-        return;
+        return false;
 
       var ownerStats = owner.GetComponent<CharacterStats>();
       if (ownerStats == null || !ownerStats.IsPartyMember)
-        return;
+        return false;
 
-      // 대상 확인 (나 또는 파티원인가?)
-      if (target == null)
-        return;
+      // 대상
+      var holder = target;
+      if (holder == null)
+        return false;
 
-      CharacterStats targetStats = target.GetComponent<CharacterStats>();
+      var targetStats = holder.GetComponent<CharacterStats>();
       if (targetStats == null || !targetStats.IsPartyMember)
-        return;
+        return false;
+
+      // 대상이 우리 편이 아니면
+      if (targetStats.HasFactionSwapEffect())
+        return false;
 
       var origin = __instance.Origin;
-      if (origin != null)
+      if (origin == null)
+        return false;
+
+      string originName = origin.name;
+
+      if (!BuffWhitelistManager.IsAllowed(originName))
       {
-        string originName = origin.name;
-
-        if (!BuffWhitelistManager.IsAllowed(originName))
+        if (!BuffWhitelistManager.IsFilterd(originName) && !string.IsNullOrEmpty(originName))
         {
-          if (!BuffWhitelistManager.IsFilterd(originName) && !string.IsNullOrEmpty(originName))
-          {
-            LogEffect(originName, __instance);
-          }
-
-          return;
+          Main.LogEffect(__instance);
         }
-        else
-        {
-          // 🔥 최종 지속시간 덮어쓰기
-          __result = Main.Settings.BuffDurationMinutes * 60f;
-        }
+        return false;
       }
-    }
 
-    private static void LogEffect(string originName, StatusEffect __instance)
-    {
-      Main.LogParams($"[StatusEffect]");
-      Main.LogParams($" OriginName            : {originName}");
-      Main.LogParams($" AbilityOrigin.name    : {__instance.AbilityOrigin.name}");
-      Main.LogParams($" BundleName            : {__instance.BundleName}");
-      Main.LogParams($" AbilityType           : {__instance.AbilityType}");
-      Main.LogParams($" EffectID              : {__instance.EffectID}");
-      Main.LogParams($" StackingKey           : {__instance.GetStackingKey()}");
-      Main.LogParams($" NonstackingEffectType : {__instance.NonstackingEffectType}");
-
-      Main.LogParams($" AffectsStat        : {__instance.Params.AffectsStat}");
-      Main.LogParams($" Duration           : {__instance.Params.Duration}");
-      Main.LogParams($" DmgType            : {__instance.Params.DmgType}");
-      Main.LogParams($" Value              : {__instance.Params.Value}");
-      Main.LogParams($" MaxRestCycles      : {__instance.Params.MaxRestCycles}");
-      Main.LogParams($" ClassType          : {__instance.Params.ClassType}");
-      Main.LogParams($" DefenseType        : {__instance.Params.DefenseType}");
-      Main.LogParams($" AttributeType      : {__instance.Params.AttributeType}");
-      Main.LogParams($" IsHostile          : {__instance.Params.IsHostile}");
+      return true;
     }
   }
 }

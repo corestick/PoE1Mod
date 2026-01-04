@@ -136,12 +136,12 @@
     "Psychovampiric_Shield(Clone)",
     "고통의 연결",
     "Pain_Link(Clone)",
-    "육신의 조율",
-    "Body_Attunement(Clone)",
     "중개하기",
     "PX2_Going_Between(Clone)",
     "직관의 차용",
-    "",
+    "Borrowed_Instinct(Clone)",
+    "전력적 연합",
+    "Tactical_Meld(Clone)",
     "방어적 정신 그물",
     ""
   ],
@@ -162,6 +162,10 @@
     "Pain_Block(Clone)",
     "노출된 영혼(중개하기)",
     "Exposed_Soul",
+    "육신의 조율",
+    "Body_Attunement(Clone)",
+    "거친 흡수",
+    "Wild_Leech(Clone)",
 
     "<<사제>>",
     "고결한 영혼의 섬광",
@@ -169,6 +173,10 @@
 
     "<<전사>>",
     "불굴",
-    "Unbending(Clone)"
+    "Unbending(Clone)",
+
+    "<<바바리안>>",
+    "격분",
+    "Frenzy(Clone)"
   ]
 }

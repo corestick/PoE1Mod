@@ -24,6 +24,9 @@ namespace AdjustBuffDuration
       modEntry.OnGUI = OnGUI;
       modEntry.OnSaveGUI = OnSaveGUI;
 
+      modEntry.Logger.Log("AdjustBuffDuration Loaded Successfully!");
+
+      // Patch_GameResources_OnLoadedSave.Init();
       return true;
     }
 
@@ -32,7 +35,6 @@ namespace AdjustBuffDuration
       EnableLog = GUILayout.Toggle(EnableLog, "Log 사용");
 
       GUILayout.Label("Buff Duration");
-
       GUILayout.Label($"Current: {Settings.BuffDurationMinutes} minutes");
 
       Settings.BuffDurationMinutes = Mathf.RoundToInt(
@@ -57,6 +59,27 @@ namespace AdjustBuffDuration
       {
         Mod.Logger.Log(msg);
       }
+    }
+
+    public static void LogEffect(StatusEffect __instance)
+    {
+      LogParams($"[StatusEffect]");
+      LogParams($"OriginName : {__instance.Origin.name}");
+      LogParams($"BundleName : {__instance.BundleName}");
+      LogParams($"AbilityOrigin.name : {__instance.AbilityOrigin.name}");
+      LogParams($"AbilityType : {__instance.AbilityType}");
+      LogParams($"EffectID : {__instance.EffectID}");
+      LogParams($"Owner : {__instance.Owner}");
+      LogParams($"Target : {__instance.Target}");
+
+      LogParams($"AffectsStat : {__instance.Params.AffectsStat}");
+      LogParams($"param.Duration : {__instance.Params.Duration}");
+      LogParams($"TimeLeft : {__instance.TimeLeft}");
+      LogParams($"m_durationOverride : {__instance.m_durationOverride}");
+      LogParams($"m_needsDurationCalculated : {__instance.m_needsDurationCalculated}");
+      LogParams($"CurrentAppliedValue : {__instance.CurrentAppliedValue}");
+      LogParams($"IsHostile : {__instance.Params.IsHostile}");
+      LogParams($"TemporaryDurationAdjustment : {__instance.TemporaryDurationAdjustment}");
     }
   }
 
