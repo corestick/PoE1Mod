@@ -9,7 +9,6 @@ namespace StackableMod
     [HarmonyPostfix]
     public static void Postfix(StatusEffect __instance, ref bool __result)
     {
-      // 기본 false 유지
       if (__result)
         return;
 
@@ -17,7 +16,8 @@ namespace StackableMod
         && __instance.Target != null
         && PartyHelper.IsPartyMember(__instance.Target))
       {
-        if (__instance.AbilityType == GenericAbility.AbilityType.Ability)
+        if (__instance.AbilityType == GenericAbility.AbilityType.Ability
+        || __instance.AbilityType == GenericAbility.AbilityType.Talent)
         {
           __result = true;
         }
