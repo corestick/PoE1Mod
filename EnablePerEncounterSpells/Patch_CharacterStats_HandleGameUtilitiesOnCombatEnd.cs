@@ -27,7 +27,8 @@ namespace EnablePerEncounterSpells
           continue;
 
         // ✅ Per Rest 능력만 대상
-        if (ability.CooldownType != GenericAbility.CooldownMode.PerRest)
+        if (ability.CooldownType != GenericAbility.CooldownMode.PerRest
+          && ability.CooldownType != GenericAbility.CooldownMode.Charged)
           continue;
 
         // 🔑 휴식과 동일하게: 쿨다운이 남아있는 동안 계속 복구
@@ -39,6 +40,12 @@ namespace EnablePerEncounterSpells
           if (ability.UsesLeft() <= 0)
             break;
         }
+      }
+
+      // 주문
+      for (int i = 0; i < __instance.SpellCastCount.Length; i++)
+      {
+        __instance.SpellCastCount[i] = 0;
       }
     }
   }
