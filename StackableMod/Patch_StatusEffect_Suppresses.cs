@@ -15,6 +15,7 @@ namespace StackableMod
       switch (__instance.AbilityType)
       {
         case GenericAbility.AbilityType.Ability:
+        case GenericAbility.AbilityType.Spell:
         case GenericAbility.AbilityType.Talent:
           if (!Main.Settings.EnableForAbilities)
             return true;
@@ -24,6 +25,8 @@ namespace StackableMod
           if (!Main.Settings.EnableForEquipment)
             return true;
           break;
+        default:
+          return true;
       }
 
       __result = false;

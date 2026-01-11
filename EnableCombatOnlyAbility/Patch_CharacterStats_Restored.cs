@@ -5,7 +5,7 @@ using System.ComponentModel;
 namespace EnableCombatOnlyAbility
 {
   [HarmonyPatch(typeof(CharacterStats), "Restored")]
-  public static class CharacterStats_Restored_Postfix
+  public static class Patch_CharacterStats_Restored
   {
     [HarmonyPostfix]
     public static bool Prefix(CharacterStats __instance)

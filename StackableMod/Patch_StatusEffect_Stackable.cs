@@ -17,7 +17,8 @@ namespace StackableMod
         && PartyHelper.IsPartyMember(__instance.Target))
       {
         if (__instance.AbilityType == GenericAbility.AbilityType.Ability
-        || __instance.AbilityType == GenericAbility.AbilityType.Talent)
+        || __instance.AbilityType == GenericAbility.AbilityType.Talent
+        || __instance.AbilityType == GenericAbility.AbilityType.Spell)
         {
           __result = true;
         }
