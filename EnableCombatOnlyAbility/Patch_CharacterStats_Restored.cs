@@ -1,6 +1,9 @@
 using HarmonyLib;
 using UnityModManagerNet;
 using System.ComponentModel;
+using System.Linq;
+using System.Collections.Generic;
+using System;
 
 namespace EnableCombatOnlyAbility
 {
