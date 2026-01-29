@@ -30,7 +30,7 @@ namespace StrongholdAdventureTurn
         GUILayout.HorizontalSlider(
           Settings.SpawnAdventureTurnCount,
           1,  // 1턴
-          8   // 8턴
+          20   // 20턴
         )
       );
     }
