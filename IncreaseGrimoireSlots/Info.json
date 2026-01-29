@@ -1,0 +1,10 @@
+{
+  "Id": "IncreaseGrimoireSlots",
+  "DisplayName": "IncreaseGrimoireSlots",
+  "Author": "Jongwon",
+  "Version": "1.0.21",
+  "ManagerVersion": "0.32.4",
+  "Requirements": [],
+  "AssemblyName": "IncreaseGrimoireSlots.dll",
+  "EntryMethod": "IncreaseGrimoireSlots.Main.Load"
+}

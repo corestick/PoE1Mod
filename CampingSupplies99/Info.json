@@ -1,0 +1,11 @@
+{
+  "Id": "CampingSupplies99",
+  "DisplayName": "Camping Supplies Max Tweaker",
+  "Author": "Jongwon",
+  "Version": "1.0.0",
+  "ManagerVersion": "0.32.4",
+  "Requirements": [],
+  "Game": "PillarsOfEternity",
+  "AssemblyName": "CampingSupplies99.dll",
+  "EntryMethod": "CampingSupplies99.Main.Load"
+}

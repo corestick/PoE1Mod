@@ -1,0 +1,10 @@
+{
+  "Id": "CipherStartingFocus",
+  "DisplayName": "CipherStartingFocus",
+  "Author": "Jongwon",
+  "Version": "1.0.0",
+  "ManagerVersion": "0.32.4",
+  "Requirements": [],
+  "AssemblyName": "CipherStartingFocus.dll",
+  "EntryMethod": "CipherStartingFocus.Main.Load"
+}
