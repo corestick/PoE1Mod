@@ -37,10 +37,23 @@ namespace AdjustDifficulty
         GUILayout.HorizontalSlider(
           Settings.HealthStaminaMult,
           0.5f,     // 최소 0.5배
-          10f   // 최대 10배
+          50f   // 최대 50배
       );
 
       Settings.HealthStaminaMult = (float)Math.Round((double)(value / step)) * step;
+
+      GUILayout.Label("Stat Bonus");
+      GUILayout.Label($"Current: +{Settings.StatBonus}");
+
+      float step2 = 1.0f;
+      float value2 =
+        GUILayout.HorizontalSlider(
+            Settings.StatBonus,
+            1.0f,     // 최소
+            100f   // 최대
+        );
+
+      Settings.StatBonus = (float)Math.Round((double)(value2 / step2)) * step2;
     }
 
     static void OnSaveGUI(UnityModManager.ModEntry modEntry)
@@ -61,6 +74,7 @@ namespace AdjustDifficulty
   {
     // 기본
     public float HealthStaminaMult = 1f;
+    public float StatBonus = 15f;
 
     public override void Save(UnityModManager.ModEntry modEntry)
     {

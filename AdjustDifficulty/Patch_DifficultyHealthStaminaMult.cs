@@ -22,4 +22,20 @@ namespace AdjustDifficulty
       }
     }
   }
+
+  [HarmonyPatch(typeof(CharacterStats), "get_DifficultyStatBonus")]
+  public static class Patch_DifficultyStatBonus
+  {
+    public static void Postfix(CharacterStats __instance, ref float __result)
+    {
+      if (GameState.Instance && !__instance.IsPartyMember && !__instance.HasFactionSwapEffect())
+      {
+        __result = Main.Settings.StatBonus;
+      }
+      else
+      {
+        __result = 0f;
+      }
+    }
+  }
 }
